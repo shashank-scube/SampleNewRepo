@@ -364,7 +364,8 @@ public class AtmManagment {
         System.out.println("Enter the Old Password");
         int oldPassword=input.nextInt();
         String oldPin=Integer.toString(oldPassword);
-        return oldPin.length() == 4 && oldPin.equals(getCardPassword(accountHolderDetails, cardNumber));
+        boolean checkVerifyOldPin=oldPin.length() == 4 && oldPin.equals(getCardPassword(accountHolderDetails, cardNumber));
+        return checkVerifyOldPin;
     }
     private boolean verifyNewChangePin()
     {
