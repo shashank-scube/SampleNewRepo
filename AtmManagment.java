@@ -22,6 +22,11 @@ public class AtmManagment {
     // Main Method starts hear
     public static void main(String[] args)
     {
+        // used Constants for visa,rupay,contactless and mastercard
+        final String VISA="visa";
+        final String RUPAY="RuPay";
+        final String CONTACTLESS="Contactless";
+        final String MASTERCARD="MasterCard";
         System.out.println("===================Welcome PeopleBank ATM===================");
         System.out.println("Enter thr card number to verify the card");
         Scanner input = new Scanner(System.in);
@@ -31,25 +36,25 @@ public class AtmManagment {
         System.out.println("enter the expireYear in the card");
         int expireYear = input.nextInt();
         System.out.println("Choose the cardType");
-        String cardType="" ;
+        String cardType ;
         System.out.println("1.VISA 2.RuPay 3.Contactless 4.Other");
         int choice = input.nextInt();
         // choice for choose the ATM cardType
         switch (choice) {
             case 1:
-                cardType = "VISA";
+                cardType = VISA;
                 break;
             case 2:
-                cardType = "RuPay";
+                cardType = RUPAY;
                 break;
             case 3:
-                cardType = "Contactless";
+                cardType = CONTACTLESS;
                 break;
             case 4:
                 //If the User don't have cardType given in Option he can choose Other Option to add the cardType
                 System.out.println("enter the cardType have in your card");
                 String otherCardType = input.next();
-                String[]CardTypes = {"VISA", "RuPay", "Contactless", "MasterCard"};
+                String[]CardTypes = {VISA, RUPAY, CONTACTLESS, MASTERCARD};
                 if (Arrays.asList(CardTypes).contains(otherCardType)) {
                     cardType = otherCardType;
 
