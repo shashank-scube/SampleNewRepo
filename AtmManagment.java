@@ -234,7 +234,7 @@ public class AtmManagment {
                     break;
                 case 5: atmManagement.fastCash(cardNumber,accountHolderDetails,transactionDetails);
                     break;
-                case 6:atmManagement.fundTransaction(accountHolderDetails,cardNumber,transactionDetails);
+                case 6:atmManagement.fundTransactionAction(accountHolderDetails,cardNumber,transactionDetails);
                     break;
                 case 7:return ;
                 case 8:main(null);
@@ -252,39 +252,40 @@ public class AtmManagment {
         System.out.println("withdraw option");
         System.out.println("Enter the amount to withDraw");
         Scanner input=new Scanner(System.in);
-        int withDrewAmount=input.nextInt();
-        if(withDrewAmount<Integer.parseInt(getCardBalance(accountHolderDetails,cardNumber)))
+        int withDrawAmount =input.nextInt();
+        if(withDrawAmount <Integer.parseInt(getCardBalance(accountHolderDetails,cardNumber)))
         {
-            boolean withDrewAmountVerify=false;
+            boolean withDrawAmountVerify =false;
             int remainingAttempts=3;
-            while(!withDrewAmountVerify && remainingAttempts>0)
+            while(!withDrawAmountVerify && remainingAttempts>0)
             {
-                withDrewAmountVerify=withDrewAmountPinVerify(accountHolderDetails,cardNumber);
+                withDrawAmountVerify= withDrawAmountPinVerify(accountHolderDetails,cardNumber);
                 remainingAttempts--;
             }
-            if(!withDrewAmountVerify)
+            if(!withDrawAmountVerify)
             {
                 System.out.printf("Incorrect PIN. Please try again. You have %d attempts remaining.\n", remainingAttempts);
             }
-            if(withDrewAmountVerify)
+            if(withDrawAmountVerify)
             {
                 System.out.println("please wait for you transaction");
-                System.out.println("Withdrew Successful of" + withDrewAmount+"/-Rs");
-                int remainingBalance=Integer.parseInt(getCardBalance(accountHolderDetails,cardNumber))-withDrewAmount;
+                System.out.println("Withdrew Successful of" + withDrawAmount +"/-Rs");
+                int remainingBalance=Integer.parseInt(getCardBalance(accountHolderDetails,cardNumber))- withDrawAmount;
                 putRemainingBalance(accountHolderDetails,cardNumber,remainingBalance);
-                transactionDetails.add("withdraw amount of"+withDrewAmount+"-/Rs");
+                transactionDetails.add("withdraw amount of"+ withDrawAmount +"-/Rs");
             }else{
                 System.out.println("Sorry lot of trails happen so please contact your Bank");
             }
         }
     }
     // to verify the pin method was to verify the pin to all the transaction like withdraw,fastCash and also fundTransform.
-    private boolean withDrewAmountPinVerify(Map<String, Map<String, String>> accountHolderDetails, String cardNumber) {
+    private boolean withDrawAmountPinVerify(Map<String, Map<String, String>> accountHolderDetails, String cardNumber) {
         Scanner input=new Scanner(System.in);
         //no implemented the option of current or savings account
         System.out.println("Enter the pin Number to conform you Transaction");
         int pinNumber=input.nextInt();
-        return Integer.toString(pinNumber).length() == 4 && Integer.toString(pinNumber).equals(getCardPassword(accountHolderDetails, cardNumber));
+        boolean checkPinVerified=Integer.toString(pinNumber).length() == 4 && Integer.toString(pinNumber).equals(getCardPassword(accountHolderDetails, cardNumber));
+        return checkPinVerified;
     }
     // end of withdraw amount
 
@@ -395,7 +396,7 @@ public class AtmManagment {
         int remainingAttempts=3;
         while(!pinVerification && remainingAttempts>0)
         {
-            pinVerification=withDrewAmountPinVerify(accountHolderDetails,cardNumber);
+            pinVerification= withDrawAmountPinVerify(accountHolderDetails,cardNumber);
             remainingAttempts--;
         }
         if(!pinVerification)
@@ -416,7 +417,7 @@ public class AtmManagment {
 
     }
     //it will be developed in future
-    private void fundTransaction(Map<String,Map<String,String>> accountHolderDetails,String cardNumber,List<String> transactionDetails) {
+    private void fundTransactionAction(Map<String,Map<String,String>> accountHolderDetails,String cardNumber,List<String> transactionDetails) {
         Scanner input = new Scanner(System.in);
         System.out.println("FundTransaction option");
         System.out.println("Enter the Account Number to Transform");
@@ -429,7 +430,7 @@ public class AtmManagment {
             int remainingAttempts=3;
             while(!pinVerification && remainingAttempts>0)
             {
-                pinVerification=withDrewAmountPinVerify(accountHolderDetails,cardNumber);
+                pinVerification= withDrawAmountPinVerify(accountHolderDetails,cardNumber);
                 remainingAttempts--;
             }
             if(!pinVerification)
