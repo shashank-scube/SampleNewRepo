@@ -54,8 +54,8 @@ public class AtmManagment {
                 //If the User don't have cardType given in Option he can choose Other Option to add the cardType
                 System.out.println("enter the cardType have in your card");
                 String otherCardType = input.next();
-                String[]CardTypes = {VISA, RUPAY, CONTACTLESS, MASTERCARD};
-                if (Arrays.asList(CardTypes).contains(otherCardType)) {
+                String[] cardTypes = {VISA, RUPAY, CONTACTLESS, MASTERCARD};
+                if (Arrays.asList(cardTypes).contains(otherCardType)) {
                     cardType = otherCardType;
 
                 } else {
@@ -195,6 +195,11 @@ public class AtmManagment {
     public void menuOption(Map<String,Map<String,String>> accountHolderDetails,String cardNumber)
     {
         //Selection of Language
+        final String KANNADA="Kannada";
+        final String HINDI="HINDI";
+        final String TELUGU="Telugu";
+        final String TAMIL="Tamil";
+        final String ENGLISH="English";
         Scanner input=new Scanner(System.in);
         String languageSelection="";
         System.out.println("Select you language");
@@ -202,15 +207,15 @@ public class AtmManagment {
         int choice=input.nextInt();
         switch(choice)
         {
-            case 1:languageSelection="Kannada";
+            case 1:languageSelection=KANNADA;
                 break;
-            case 2: languageSelection="Hindi";
+            case 2: languageSelection=HINDI;
                 break;
-            case 3:languageSelection="Telugu";
+            case 3:languageSelection=TELUGU;
                 break;
-            case 4:languageSelection="Tamil";
+            case 4:languageSelection=TAMIL;
                 break;
-            default: languageSelection="English";
+            default: languageSelection=ENGLISH;
         }
 
         //Display the menuOption hear
