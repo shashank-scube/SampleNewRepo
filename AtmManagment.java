@@ -237,7 +237,7 @@ public class AtmManagment {
                     break;
                 case 4: atmManagement.changePin(accountHolderDetails,cardNumber);
                     break;
-                case 5: atmManagement.fastCash(cardNumber,accountHolderDetails,transactionDetails);
+                case 5: atmManagement.withdrawFastCash(cardNumber,accountHolderDetails,transactionDetails);
                     break;
                 case 6:atmManagement.fundTransactionAction(accountHolderDetails,cardNumber,transactionDetails);
                     break;
@@ -383,7 +383,7 @@ public class AtmManagment {
     //end of changing the pin_Number
 
     //it will be developed in future
-    private void fastCash(String cardNumber,Map<String,Map<String,String>> accountHolderDetails,List<String> transactionDetails) {
+    private void withdrawFastCash(String cardNumber, Map<String,Map<String,String>> accountHolderDetails, List<String> transactionDetails) {
         Scanner input=new Scanner(System.in);
         System.out.println("FastCash option");
         System.out.println("Choose the fastCash Amount");
