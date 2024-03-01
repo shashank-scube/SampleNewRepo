@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class AtmManagement {
+public class AtmManagment {
     // not implemented any receipt printing method it will be developed in future
     static Map<String,String> accountHolderData=new HashMap<>()
 
@@ -61,7 +61,8 @@ public class AtmManagement {
                 }
                 break;
         }
-        AtmManagement atmManagement=new AtmManagement();
+
+        AtmManagment atmManagement=new AtmManagment();
         boolean verifiedCard= atmManagement.verifyCard(cardNumber,expireMonth,expireYear,accountHolderDetails);
 
         //verifying the card details
@@ -212,7 +213,7 @@ public class AtmManagement {
         while(true)
         {
             List<String> transactionDetails=new ArrayList<>();
-            AtmManagement atmManagement=new AtmManagement();
+            AtmManagment atmManagement=new AtmManagment();
             System.out.println("Choose you Transaction Option");
             System.out.println("1.Withdraw 2.TransactionDetails 3.CheckBalance 4.ChangePin 5.FastCash 6.FundTransaction 7.Exit 8.Login-another-AC");
             int chooseOption=input.nextInt();
