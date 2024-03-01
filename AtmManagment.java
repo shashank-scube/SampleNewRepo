@@ -1,16 +1,26 @@
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.*;
 
 public class AtmManagment {
     // not implemented any receipt printing method it will be developed in future
+    static Properties accountHolderDataProperties=new Properties();
+    static{
+        try(FileInputStream input=new FileInputStream("accountDetiles.properties")){
+            accountHolderDataProperties.load(input);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
     static Map<String,String> accountHolderData=new HashMap<>()
 
     {{
-        accountHolderData.put("Name","Ramesh");
-        accountHolderData.put("Password","1234");
-        accountHolderData.put("CardNumber","CARD123456");
-        accountHolderData.put("ExpireMonth","6");
-        accountHolderData.put("ExpireYear","2026");
-        accountHolderData.put("Balance","1200.00");
+        accountHolderData.put("Name",accountHolderDataProperties.getProperty("Name"));
+        accountHolderData.put("Password",accountHolderDataProperties.getProperty("Password"));
+        accountHolderData.put("CardNumber",accountHolderDataProperties.getProperty("CardNumber"));
+        accountHolderData.put("ExpireMonth",accountHolderDataProperties.getProperty("ExpireMounth"));
+        accountHolderData.put("ExpireYear",accountHolderDataProperties.getProperty("ExpireYear"));
+        accountHolderData.put("Balance",accountHolderDataProperties.getProperty("Balance"));
     }};
 
     static Map<String,Map<String,String>> accountHolderDetails=new HashMap<>(){{
